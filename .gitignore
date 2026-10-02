@@ -1,0 +1,10 @@
+# only the site itself goes online; working files stay on the PC
+assets/raw/
+versions/
+tools/
+*.mp4
+*.zip
+FACT-at-VCU-phone.html
+logo-2d-for-approval.png
+mobile-preview.png
+README.md

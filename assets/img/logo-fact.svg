@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-132 -132 284 454" role="img" aria-label="FACT at VCU logo: two linked rings and a dot">
+  <!-- Vector redraw of FACT's mark: a large ring linked through a smaller ring, with a solid dot
+       tucked behind the smaller ring. The masks cut the over/under gaps that make the rings read as linked. -->
+  <defs>
+    <mask id="fact-big" maskUnits="userSpaceOnUse" x="-140" y="-140" width="300" height="470">
+      <rect x="-140" y="-140" width="300" height="470" fill="#fff"/>
+      <path d="M-40.3 121.5A81 81 0 0 1-11.1 74.3" fill="none" stroke="#000" stroke-width="36"/>
+    </mask>
+    <mask id="fact-small" maskUnits="userSpaceOnUse" x="-140" y="-140" width="300" height="470">
+      <rect x="-140" y="-140" width="300" height="470" fill="#fff"/>
+      <path d="M93.4 35.8A100 100 0 0 1 48.5 87.5" fill="none" stroke="#000" stroke-width="38"/>
+    </mask>
+    <mask id="fact-dot" maskUnits="userSpaceOnUse" x="-140" y="-140" width="300" height="470">
+      <rect x="-140" y="-140" width="300" height="470" fill="#fff"/>
+      <circle cx="39" cy="138" r="99" fill="#000"/>
+    </mask>
+  </defs>
+  <g fill="none" stroke="#FCD116">
+    <circle r="100" stroke-width="24" mask="url(#fact-big)"/>
+    <circle cx="39" cy="138" r="81" stroke-width="22" mask="url(#fact-small)"/>
+  </g>
+  <circle cx="-20" cy="229" r="72" fill="#FCD116" mask="url(#fact-dot)"/>
+</svg>
