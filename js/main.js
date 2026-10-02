@@ -215,7 +215,7 @@
     return (p[0][0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
   };
   /* photo sits over the initials; if the file is missing the initials show */
-  const face = (name, cls) => `<img class="${cls}" src="${photo(name)}" alt="" loading="lazy" onerror="this.remove()">`;
+  const face = (name, cls) => ((D.noPhoto || []).includes(name) ? "" : `<img class="${cls}" src="${photo(name)}" alt="" loading="lazy" onerror="this.remove()">`);
 
   /* hero polaroids: the five e-board members */
   $("#heroPolaroids").innerHTML = D.council.map((c, i) => `

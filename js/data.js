@@ -150,6 +150,8 @@ window.FACT = {
      dashes for spaces). No file means the card shows initials.  */
   photoDir: "assets/council/",
   photoExt: ".webp",
+  /* People with no photo yet. They show as initials. Remove a name once its file is added. */
+  noPhoto: ["Luca Finazzo"],
   council: [
     {
       id: "indie", genre: "Filipino Indie", color: "#5FD0D6", ink: "#062A33",
@@ -177,7 +179,7 @@ window.FACT = {
       lead: { name: "Gabe Tell", role: "External Vice President" },
       advisor: { name: "Malia Feliciano" },
       teams: [
-        { name: "Sports", people: ["Larry Morris III", "Isabella Ruckwardt"] },
+        { name: "Sports", people: ["Isabella Ruckwardt", "Luca Finazzo"] },
         { name: "District 7", people: ["Easton Brock", "Aaron Abbas"] }
       ]
     },
