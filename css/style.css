@@ -1235,7 +1235,7 @@ main > .council {
 .cell p { margin-top: .6rem; line-height: 1.45; }
 
 .cell-culture { grid-column: span 7; min-height: 560px; background: radial-gradient(70% 60% at 50% 28%, #6a4466, transparent 70%), var(--plum-2); color: var(--cream); overflow: hidden; }
-.cell-culture img { position: absolute; top: 6%; left: 50%; width: min(84%, 580px); translate: -50% 0; transition: scale .7s var(--ease), rotate .7s var(--ease); }
+.cell-culture img { position: absolute; top: 9%; left: 50%; width: min(90%, 620px); translate: -50% 0; transition: scale .7s var(--ease), rotate .7s var(--ease); }
 .cell-culture:hover img { scale: 1.05; rotate: -1.5deg; }
 .cell-culture h3 { color: var(--pink); }
 
@@ -1471,8 +1471,8 @@ main > .council {
 
   .cell-d7, .cell-sports { grid-column: span 12; }
   .cell { min-height: 300px; }
-  .cell-culture { min-height: 440px; }
-  .cell-culture img { width: 92%; }
+  .cell-culture { min-height: 410px; }
+  .cell-culture img { width: 96%; top: 7%; }
   .cell-dance { min-height: 440px; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
 }
