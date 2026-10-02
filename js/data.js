@@ -177,7 +177,7 @@ window.FACT = {
       lead: { name: "Gabe Tell", role: "External Vice President" },
       advisor: { name: "Malia Feliciano" },
       teams: [
-        { name: "Sports", people: ["Isabella Ruckwardt"] },
+        { name: "Sports", people: ["Larry Morris III", "Isabella Ruckwardt"] },
         { name: "District 7", people: ["Easton Brock", "Aaron Abbas"] }
       ]
     },

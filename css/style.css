@@ -1058,15 +1058,64 @@ main > .council {
 .sa-name { font-family: var(--font-d); font-size: clamp(1rem, 1.8vw, 1.6rem); line-height: 1; text-transform: uppercase; letter-spacing: .01em; margin-top: .35rem; }
 .sa-genre { font-family: var(--font-m); font-size: clamp(.8rem, 1.1vw, 1rem); color: var(--g); }
 
+/* every committee, always visible: one column per genre on wide screens */
+.chairs {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: clamp(.7rem, 1.4vw, 1.1rem);
+}
+.committee {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: .15rem;
+  padding: 1rem .9rem 1.1rem;
+  border: 1.5px solid rgba(255, 246, 234, .2);
+  border-top: 5px solid var(--g);
+  border-radius: 10px;
+  background: rgba(255, 246, 234, .06);
+  color: var(--cream);
+  text-align: left;
+  cursor: pointer;
+  transition: translate .5s var(--ease), background-color .4s, border-color .4s, box-shadow .5s;
+}
+.committee:hover { translate: 0 -4px; background: rgba(255, 246, 234, .1); }
+.committee[aria-pressed="true"] { border-color: var(--g); background: rgba(255, 246, 234, .12); box-shadow: 0 16px 34px rgba(0, 0, 0, .4); }
+.committee-name { font-family: var(--font-d); font-size: clamp(1.15rem, 1.7vw, 1.6rem); line-height: 1; text-transform: uppercase; letter-spacing: .01em; --o: #1a0d17; }
+.committee-genre { font-family: var(--font-m); font-size: .88rem; color: var(--g); margin-bottom: .7rem; }
+.committee ul { display: grid; gap: .6rem; width: 100%; }
+.person { display: flex; align-items: center; gap: .7rem; font-weight: 600; font-size: .98rem; line-height: 1.2; }
+.avatar {
+  position: relative;
+  flex: none;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: var(--g);
+  color: var(--gk);
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  border: 3px solid var(--cream);
+  overflow: hidden;
+  transition: rotate .5s var(--spring), scale .5s var(--spring);
+}
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.person:hover .avatar { rotate: -6deg; scale: 1.35; z-index: 2; }
+
+/* the genre that is "playing" */
 .crew {
   --g: var(--aqua);
   --gk: var(--plum);
   display: grid;
-  grid-template-columns: minmax(170px, 250px) 1fr;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(120px, 170px) 1fr;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
   align-items: center;
-  margin-top: clamp(2.2rem, 4vw, 3.2rem);
-  padding: clamp(1.4rem, 3vw, 2.6rem);
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  padding: clamp(1.2rem, 2.4vw, 2rem);
   border-radius: 10px;
   background: rgba(255, 246, 234, .06);
   border: 1.5px solid rgba(255, 246, 234, .2);
@@ -1098,36 +1147,16 @@ main > .council {
   30% { rotate: -80deg; }
   100% { rotate: 360deg; }
 }
-.cd-label { width: 62%; text-align: center; font-family: var(--font-d); font-size: clamp(.62rem, 1vw, .85rem); line-height: 1; text-transform: uppercase; color: var(--gk); translate: 0 -160%; }
+.cd-label { width: 62%; text-align: center; font-family: var(--font-d); font-size: clamp(.5rem, .8vw, .7rem); line-height: 1; text-transform: uppercase; color: var(--gk); translate: 0 -160%; }
 
-.crew-genre { font-family: var(--font-d); font-weight: 400; font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1; text-transform: uppercase; color: var(--g); --o: #1a0d17; }
-.crew-blurb { margin-top: .9rem; max-width: 60ch; color: #E6D8E0; }
-.roster { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.5rem 1.6rem; margin-top: 1.8rem; }
-.team h4 { font-family: var(--font-t); font-weight: 400; font-size: .98rem; color: var(--pink); margin-bottom: .7rem; }
-.team ul { display: grid; gap: .6rem; }
-.person { display: flex; align-items: center; gap: .8rem; font-weight: 600; }
-.avatar {
-  position: relative;
-  flex: none;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  display: grid;
-  place-content: center;
-  background: var(--g);
-  color: var(--gk);
-  font-family: var(--font-d);
-  font-size: 1.1rem;
-  border: 3px solid var(--cream);
-  overflow: hidden;
-  transition: rotate .5s var(--spring), scale .5s var(--spring);
-}
-.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.person:hover .avatar { rotate: -6deg; scale: 1.5; z-index: 2; }
-.team.lead-team .avatar { width: 74px; height: 74px; }
+.crew-now { font-family: var(--font-t); color: var(--pink); font-size: .98rem; }
+.crew-genre { font-family: var(--font-d); font-weight: 400; font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1; text-transform: uppercase; color: var(--g); --o: #1a0d17; margin-top: .2rem; }
+.crew-blurb { margin-top: .8rem; max-width: 62ch; color: #E6D8E0; }
+.crew-line { margin-top: .6rem; max-width: 62ch; font-family: var(--font-t); font-size: .95rem; color: #CDB9C6; }
 .crew-body > * { animation: riseIn .55s var(--ease) both; }
-.crew-body > *:nth-child(2) { animation-delay: .06s; }
-.crew-body .team { animation: riseIn .55s var(--ease) both; animation-delay: calc(var(--i) * 70ms + .12s); }
+.crew-body > *:nth-child(2) { animation-delay: .05s; }
+.crew-body > *:nth-child(3) { animation-delay: .1s; }
+.crew-body > *:nth-child(4) { animation-delay: .15s; }
 
 /* ============================================================
    FAMILY
@@ -1446,8 +1475,9 @@ main > .council {
   .eb-role { font-size: .9rem; }
   .eb-name { font-size: 1.5rem; }
   .eb-genre { font-size: .95rem; }
-  .crew { grid-template-columns: 1fr; }
-  .cd-wrap { width: min(54%, 200px); margin-inline: auto; }
+  /* two committees per row: each row is one genre */
+  .chairs { grid-template-rows: none; grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crew { grid-template-columns: minmax(84px, 110px) 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -1469,6 +1499,9 @@ main > .council {
   .tribes-head { flex-direction: column; align-items: flex-start; }
   .tribes { grid-template-columns: 1fr 1fr; }
 
+  .avatar { width: 50px; height: 50px; font-size: .95rem; }
+  .person { gap: .55rem; font-size: .92rem; }
+  .committee { padding: .9rem .7rem 1rem; }
   .cell-d7, .cell-sports { grid-column: span 12; }
   .cell { min-height: 300px; }
   .cell-culture { min-height: 410px; }

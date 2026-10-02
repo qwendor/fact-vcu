@@ -419,20 +419,31 @@
 
   const person = (name) => `<li class="person"><span class="avatar">${initials(name)}${face(name, "")}</span><span>${esc(name)}</span></li>`;
 
+  /* every committee and every chair, always on show. Two committees per genre, in the same
+     order as the e-board, so on a wide screen each column lines up under its e-board member. */
+  $("#chairs").innerHTML = D.council.map((c, i) => c.teams.map((t) => `
+    <button class="committee" type="button" aria-pressed="false" style="--g:${c.color};--gk:${c.ink}" data-i="${i}">
+      <span class="committee-name outlined">${esc(t.name)}</span>
+      <span class="committee-genre">${esc(c.genre)}</span>
+      <ul>${t.people.map(person).join("")}</ul>
+    </button>`).join("")).join("");
+  const committeeCards = $$("#chairs .committee");
+
   function selectCrew(i, animate = true) {
     const c = D.council[i];
     ebCards.forEach((b, k) => b.setAttribute("aria-selected", String(k === i)));
     saCards.forEach((b, k) => b.setAttribute("aria-pressed", String(k === i)));
+    committeeCards.forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.i === i)));
     crew.style.setProperty("--g", c.color);
     crew.style.setProperty("--gk", c.ink);
     crew.setAttribute("aria-labelledby", "eb-" + c.id);
     cdLabel.textContent = c.genre;
-    const teams = [{ name: "Senior Advisor", people: [c.advisor.name], lead: true }].concat(c.teams);
+    const chairCount = c.teams.reduce((n, t) => n + t.people.length, 0);
     crewBody.innerHTML = `
+      <p class="crew-now">now playing:</p>
       <h3 class="crew-genre outlined">${esc(c.genre)}</h3>
       <p class="crew-blurb">${esc(c.blurb)}</p>
-      <div class="roster">${teams.map((t, k) =>
-        `<div class="team ${t.lead ? "lead-team" : ""}" style="--i:${k}"><h4>${esc(t.name.toLowerCase())}:</h4><ul>${t.people.map(person).join("")}</ul></div>`).join("")}</div>`;
+      <p class="crew-line">${esc(c.lead.name)} (${esc(c.lead.role)}), senior advisor ${esc(c.advisor.name)}, and ${chairCount} chairs across ${esc(c.teams.map((t) => t.name).join(" and "))}.</p>`;
     if (animate && !reduce) {
       cd.classList.remove("scratch");
       void cd.offsetWidth;
@@ -450,6 +461,7 @@
     });
   });
   saCards.forEach((b, i) => b.addEventListener("click", () => selectCrew(i)));
+  committeeCards.forEach((b) => b.addEventListener("click", () => selectCrew(+b.dataset.i)));
   selectCrew(0, false);
 
   /* a hero polaroid jumps to that person's crew */
