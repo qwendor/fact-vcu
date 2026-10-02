@@ -134,7 +134,7 @@ window.FACT = {
 
   /* ---------- Every year ---------- */
   traditions: [
-    { title: "Kuya/Ate Week", season: "Fall", note: "A week of clues, then the reveal: every new member meets their big.", icon: "ph-users-three" },
+    { title: "Kuya/Ate Week", season: "Fall", note: "A week of clues, then the reveal: every little who applied meets their big.", icon: "ph-users-three" },
     { title: "Talent Night", season: "Fall", note: "Singers, dancers, comedians and whatever you can do that we haven't seen yet.", icon: "ph-microphone-stage" },
     { title: "D7 Olympics", season: "Fall", note: "Virginia's Filipino orgs go head to head in traditional games and trivia.", icon: "ph-trophy" },
     { title: "Barrio Fiesta", season: "Annual", note: "Free Filipino food, tinikling and modern sets at the Commons, open to all of VCU.", icon: "ph-confetti" },
